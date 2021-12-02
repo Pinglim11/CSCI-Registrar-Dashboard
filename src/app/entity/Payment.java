@@ -32,7 +32,7 @@ public class Payment {
 	
 	public Payment(Long paymentid, Double amountdue, String paymentdue, String paymentdate) {
 		super();
-		this.paymentid = paymentid;
+		//this.paymentid = paymentid;
 		this.amountdue = amountdue;
 		this.paymentdue = paymentdue;
 		this.paymentdate = paymentdate;

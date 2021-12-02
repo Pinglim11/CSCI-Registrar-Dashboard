@@ -14,8 +14,14 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
-
+import app.components.HoldOrderDto;
+import app.components.OtherDocumentationDto;
+import app.components.ParkingTicketDto;
+import app.components.RegistrarManager;
+import app.components.SettleDto;
+import app.entity.HoldOrder;
+import app.entity.OtherDocumentation;
+import app.entity.ParkingTicket;
 import app.repository.HoldOrderRepository;
 import app.repository.ParkingTicketRepository;
 import app.repository.PaymentRepository;
@@ -41,6 +47,9 @@ public class RegistrarController {
 	
 	@Autowired
 	OtherDocumentationRepository otherdocurepo;
+	
+	@Autowired
+	RegistrarManager manager; 
 	
 	
 	@GET
@@ -68,32 +77,36 @@ public class RegistrarController {
 	@Path("/addstudentholdorder")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String addholdo(){             //string for the meantime 
-		return ("ok");
+	public String addholdo(HoldOrderDto h){
+		HoldOrder holdorderobject= manager.saveHoldOrder(h); 
+		return (holdorderobject.toString());
 	}
 	
 	@POST
 	@Path("/addstudentparkingticket")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String addticket(){                    //string for the meantime 
-		return ("ok");
+	public String addticket(ParkingTicketDto p){
+		ParkingTicket parkingticketobject=manager.saveParkingTicket(p); 
+		return (parkingticketobject.toString());
 	}
 	
 	@POST
 	@Path("/addstudentotherdocu")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String addother(){                       //string for the meantime 
-		return ("ok");
+	public String addother(OtherDocumentationDto o){
+		OtherDocumentation otherdocumentationobject=manager.saveOtherDocumentation(o); 
+		return (otherdocumentationobject.toString());
 	}
 	
 	@POST
 	@Path("/settle")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String settle(){                       //string for the meantime 
-		return ("ok");
+	public String settle(SettleDto s){
+		manager.settle(s); 
+		return ("Settle");
 	}
 
 	
