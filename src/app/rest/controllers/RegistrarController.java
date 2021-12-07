@@ -1,6 +1,7 @@
 package app.rest.controllers;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 
 //import java.util.List;  
 
@@ -55,14 +56,14 @@ public class RegistrarController {
 	@GET
 	@Path("/getstudentholdorder")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getHoldOrder(@QueryParam("a") String a){   //<List>, string for the meantime 
+	public String getHoldOrder(@QueryParam("a") String a){   
 		return ("ok");
 	}
 	
 	@GET
 	@Path("/getstudentparkingticket")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getist(@QueryParam("a") String a){   //<List>, string for the meantime 
+	public String getist(@QueryParam("a") String a){   
 		return ("ok");
 	}
 	
@@ -108,13 +109,28 @@ public class RegistrarController {
 		manager.settle(s); 
 		return ("Settle");
 	}
+	
+	@GET
+	@Path("/deleteparking")
+	public String deleteParking(@QueryParam("parkingticketid") long parkid ) {
+		manager.deleteparking(parkid);
+		return ("Deleted");
+	}
+	
+	@GET
+	@Path("/deleteholdorder")
+	public String deleteHold(@QueryParam("holdorderid") long holdid ) {
+		manager.deleteholdorder(holdid);
+		return ("Deleted");
+	}
+	
+	
+	@GET
+	@Path("/deleteotherdocs")
+	public String deleteOther(@QueryParam("otherdocsid") long otherid ) {
+		manager.deleteother(otherid);
+		return ("Deleted");
+	}
 
 	
-	//@GET
-	//@Path("/add")
-	//@Produces(MediaType.TEXT_PLAIN)
-	//public double add(@QueryParam("a") double a, @QueryParam("b") double b) ------> copy this format for multiple params
-	//{
-		//return calc.add(a, b);
-	//}
 }

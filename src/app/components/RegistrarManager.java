@@ -156,9 +156,28 @@ public class RegistrarManager {
 		
 	}
 	
+	public void deleteparking(Long parkingid) {
+		ParkingTicket pt = ptrepo.findById(parkingid).get();
+		Payment pay = pt.getPaymentid();
+		ptrepo.delete(pt);
+		paymentrepo.delete(pay);
+
+	}
 	
 	
+	public void deleteholdorder(Long holdorderid) {
+		HoldOrder ho = horepo.findById(holdorderid).get();
+		Payment pay = ho.getPaymentid();
+		horepo.delete(ho);
+		paymentrepo.delete(pay);
+
+	}
 	
-	
+	public void deleteother(Long parkingid) {
+		OtherDocumentation od = odrepo.findById(parkingid).get();
+		Payment pay = od.getPaymentid();
+		odrepo.delete(od);
+		paymentrepo.delete(pay);
+	}
 	
 }
