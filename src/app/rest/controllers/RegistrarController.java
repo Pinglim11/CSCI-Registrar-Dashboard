@@ -53,27 +53,6 @@ public class RegistrarController {
 	RegistrarManager manager; 
 	
 	
-	@GET
-	@Path("/getstudentholdorder")
-	@Produces(MediaType.APPLICATION_JSON)
-	public String getHoldOrder(@QueryParam("a") String a){   
-		return ("ok");
-	}
-	
-	@GET
-	@Path("/getstudentparkingticket")
-	@Produces(MediaType.APPLICATION_JSON)
-	public String getist(@QueryParam("a") String a){   
-		return ("ok");
-	}
-	
-	@GET
-	@Path("/getstudentotherdocu")
-	@Produces(MediaType.APPLICATION_JSON)
-	public String getList(@QueryParam("a") String a){   //<List>, string for the meantime 
-		return ("ok");
-	}
-	
 	@POST
 	@Path("/addstudentholdorder")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -135,28 +114,55 @@ public class RegistrarController {
 	@GET
 	@Path("/getstudentholdorder")
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public java.util.List<HoldOrder> list1(@QueryParam("ho_id") Long ho_id){
+	public java.util.List<HoldOrder> list1(Long ho_id){
 		
-		return holdorderrepo.findByholdorderid(ho_id);
+		return holdorderrepo.findAll();
 		
 	}
 	
 	@GET
 	@Path("/getstudentparkingticket")
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	public java.util.List<ParkingTicket> list2(@QueryParam("pt_id") Long pt_id){
 		
-		return parkingrepo.findByparkingticketid(pt_id);
+		return parkingrepo.findAll();
 		
 	}
 	
 	@GET
 	@Path("/getstudentotherdocu")
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	public java.util.List<OtherDocumentation> list3(@QueryParam("od_id") Long od_id){
+		
+		return otherdocurepo.findAll();
+		
+	}
+	
+	@GET
+	@Path("/searchstudentholdorder")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public java.util.List<HoldOrder> searchlist1(@QueryParam("ho_id") Long ho_id){
+		
+		return holdorderrepo.findByholdorderid(ho_id);
+		
+	}
+	
+	@GET
+	@Path("/searchstudentparkingticket")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public java.util.List<ParkingTicket> searchlist2(@QueryParam("pt_id") Long pt_id){
+		
+		return parkingrepo.findByparkingticketid(pt_id);
+		
+	}
+	
+	@GET
+	@Path("/searchstudentotherdocu")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public java.util.List<OtherDocumentation> searchlist3(@QueryParam("od_id") Long od_id){
 		
 		return otherdocurepo.findByotherdocumentationid(od_id);
 		
