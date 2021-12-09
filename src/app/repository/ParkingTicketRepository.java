@@ -11,6 +11,8 @@ import app.entity.ParkingTicket;
 @Repository
 public interface ParkingTicketRepository extends JpaRepository<ParkingTicket, Long> {
 	
-	ParkingTicket findByStudentidIdnumber(Long studentid);
+	ParkingTicket findByStudentidIdnumber(Long parkingticketid);
+	
+	public List<ParkingTicket> findByparkingticketid(Long parkingticketid);
 
 }

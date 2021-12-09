@@ -13,4 +13,5 @@ public interface OtherDocumentationRepository extends JpaRepository<OtherDocumen
 
 	OtherDocumentation findByStudentidIdnumber(Long studentid);
 	
+	public List<OtherDocumentation> findByotherdocumentationid(Long otherdocumentationid);
 }
