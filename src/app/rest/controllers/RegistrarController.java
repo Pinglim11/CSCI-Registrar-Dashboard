@@ -1,7 +1,6 @@
 package app.rest.controllers;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
+import javax.ws.rs.Consumes;   
 
 //import java.util.List;  
 
@@ -14,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+//import org.springframework.web.bind.annotation.GetMapping;
 
 import app.components.HoldOrderDto;
 import app.components.OtherDocumentationDto;
@@ -28,6 +28,8 @@ import app.repository.ParkingTicketRepository;
 import app.repository.PaymentRepository;
 import app.repository.OtherDocumentationRepository;
 import app.repository.StudentRepository;
+import app.service.ParkingTicketService;
+
 
 @Component
 @Path("/registrar")
@@ -51,6 +53,9 @@ public class RegistrarController {
 	
 	@Autowired
 	RegistrarManager manager; 
+	
+	@Autowired
+	ParkingTicketService pservice;
 	
 	
 	@POST
@@ -168,4 +173,10 @@ public class RegistrarController {
 		
 	}
 	
+//	@GET
+//	@Path("/run")
+//	public String viewTables(Model model) {
+//		model.addAttribute("listParkingTicket", pservice.getAllParkingTickets() );
+//		return "NewFile";
+//	}
 }
